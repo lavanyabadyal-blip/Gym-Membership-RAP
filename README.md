@@ -85,8 +85,7 @@ Each master entity relates 1 : N to Subscription.
 ## Team
 
 - Lavanya Badyal
-- [Member 2]
-- [Member 3]
+- Sudanshu Singh Sindhu
 
 Instructor: Andre Fischer (SAP SE)
 
