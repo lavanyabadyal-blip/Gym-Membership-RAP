@@ -1,0 +1,8 @@
+@EndUserText.label: 'Gym Membership - UI Service'
+define service ZUI_GM_Subscription {
+  expose ZC_GM_Subscription as Subscription;
+  expose ZI_GM_Member       as Member;
+  expose ZI_GM_Plan         as Plan;
+  expose ZI_GM_Trainer      as Trainer;
+  expose ZI_GM_Location     as Location;
+}

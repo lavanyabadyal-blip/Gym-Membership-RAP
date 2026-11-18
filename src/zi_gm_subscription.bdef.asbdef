@@ -1,0 +1,61 @@
+managed implementation in class zbp_i_gm_subscription unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZI_GM_Subscription alias Subscription
+persistent table zgm_subscr
+draft table zgm_subscr_d
+lock master
+total etag LastChangedAt
+etag master LocalLastChangedAt
+authorization master ( global )
+{
+  field ( numbering : managed, readonly ) SubscriptionUUID;
+  field ( readonly ) SubscriptionNo, EndDate, Amount, Status, Currency;
+  field ( readonly ) CreatedBy, CreatedAt, LastChangedBy, LastChangedAt, LocalLastChangedAt;
+  field ( mandatory ) MemberId, PlanId, StartDate;
+
+  create;
+  update;
+  delete;
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare
+  {
+    validation validateDates;
+    validation validateMembership;
+    validation validateNoOverlap;
+
+  }
+
+  determination calculateEndDateAmount on modify { field StartDate, PlanId; }
+  determination setSubscriptionNo      on save   { create; }
+  determination setStatus              on save   { create; update; }
+
+  validation validateDates      on save { field StartDate;          create; update; }
+  validation validateMembership on save { field MemberId, PlanId;   create; update; }
+  validation validateNoOverlap  on save { field MemberId, StartDate, EndDate; create; update; }
+
+  mapping for zgm_subscr
+  {
+    SubscriptionUUID   = subscription_uuid;
+    SubscriptionNo     = subscription_no;
+    MemberId           = member_id;
+    PlanId             = plan_id;
+    TrainerId          = trainer_id;
+    LocationId         = location_id;
+    StartDate          = start_date;
+    EndDate            = end_date;
+    Amount             = amount;
+    Currency           = currency;
+    Status             = status;
+    CreatedBy          = created_by;
+    CreatedAt          = created_at;
+    LastChangedBy      = last_changed_by;
+    LastChangedAt      = last_changed_at;
+    LocalLastChangedAt = local_last_changed_at;
+  }
+}

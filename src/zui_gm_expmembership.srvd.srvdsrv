@@ -1,0 +1,4 @@
+@EndUserText.label: 'Expiring Memberships - Report Service'
+define service ZUI_GM_ExpMembership {
+  expose ZC_GM_ExpiringMembership as ExpiringMembership;
+}

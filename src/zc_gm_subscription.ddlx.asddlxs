@@ -1,0 +1,67 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'Membership',
+    typeNamePlural: 'Memberships',
+    title: { type: #STANDARD, value: 'SubscriptionNo' },
+    description: { type: #STANDARD, value: 'MemberId' }
+  }
+}
+annotate entity ZC_GM_Subscription with
+{
+  @UI.facet: [
+    { id: 'General', purpose: #STANDARD, type: #IDENTIFICATION_REFERENCE,
+      label: 'Membership Details', position: 10 }
+  ]
+
+  @UI: { lineItem:       [ { position: 10, label: 'Membership No' } ],
+         identification: [ { position: 10, label: 'Membership No' } ] }
+  SubscriptionNo;
+
+  @UI: { lineItem:       [ { position: 20, label: 'Member' } ],
+         identification: [ { position: 20, label: 'Member' } ],
+         selectionField: [ { position: 10 } ] }
+  MemberId;
+
+  @UI: { lineItem:       [ { position: 30, label: 'Plan' } ],
+         identification: [ { position: 30, label: 'Plan' } ],
+         selectionField: [ { position: 20 } ] }
+  PlanId;
+
+  @UI: { identification: [ { position: 40, label: 'Trainer' } ] }
+  TrainerId;
+
+  @UI: { identification: [ { position: 50, label: 'Location' } ] }
+  LocationId;
+
+  @UI: { lineItem:       [ { position: 40, label: 'Start Date' } ],
+         identification: [ { position: 60, label: 'Start Date' } ] }
+  StartDate;
+
+  @UI: { lineItem:       [ { position: 50, label: 'End Date' } ],
+         identification: [ { position: 70, label: 'End Date' } ] }
+  EndDate;
+
+  @UI: { identification: [ { position: 80, label: 'Amount' } ] }
+  Amount;
+
+  @UI: { lineItem:       [ { position: 60, label: 'Status' } ],
+         identification: [ { position: 90, label: 'Status' } ],
+         selectionField: [ { position: 30 } ] }
+  Status;
+
+  @UI.hidden: true
+  SubscriptionUUID;
+  @UI.hidden: true
+  Currency;
+  @UI.hidden: true
+  CreatedBy;
+  @UI.hidden: true
+  CreatedAt;
+  @UI.hidden: true
+  LastChangedBy;
+  @UI.hidden: true
+  LastChangedAt;
+  @UI.hidden: true
+  LocalLastChangedAt;
+}

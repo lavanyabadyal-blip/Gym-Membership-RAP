@@ -1,0 +1,4 @@
+@EndUserText.label: 'Gym Member - Maintenance UI Service'
+define service ZUI_GM_Member {
+  expose ZC_GM_Member as Member;
+}

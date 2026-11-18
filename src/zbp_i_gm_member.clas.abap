@@ -1,0 +1,8 @@
+CLASS zbp_i_gm_member DEFINITION
+  PUBLIC ABSTRACT FINAL
+  FOR BEHAVIOR OF zi_gm_member.
+ENDCLASS.
+
+CLASS zbp_i_gm_member IMPLEMENTATION.
+ENDCLASS.
+

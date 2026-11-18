@@ -1,0 +1,28 @@
+managed implementation in class zbp_i_gm_member unique;
+strict ( 2 );
+
+define behavior for ZI_GM_Member alias Member
+persistent table zgm_member
+lock master
+authorization master ( global )
+{
+  field ( readonly ) FullName;
+  field ( mandatory ) MemberId, FirstName, LastName;
+
+  create;
+  update;
+  delete;
+
+  mapping for zgm_member
+  {
+    MemberId    = member_id;
+    FirstName   = first_name;
+    LastName    = last_name;
+    Email       = email;
+    Phone       = phone;
+    DateOfBirth = date_of_birth;
+    Gender      = gender;
+    City        = city;
+    JoinDate    = join_date;
+  }
+}
